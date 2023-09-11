@@ -18,7 +18,7 @@ require_once "traitement.php";
     <form  method="post" id="register_form">
 
         <label for="login">Login:</label>
-        <input type="text" name="login" id="login">
+        <input type="text" name="login" id="login"><p></p>
         <span></span>
 
         <label for="password">Password:</label>

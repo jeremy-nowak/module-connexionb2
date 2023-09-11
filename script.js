@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (loginValue.trim() === "") {
       login.style.backgroundColor = "red";
+      login.style.borderColor = "red"
     } else {
       login.style.backgroundColor = "green";
       login.style.borderColor = "green";
@@ -36,7 +37,12 @@ document.addEventListener("DOMContentLoaded", function () {
       login.style.backgroundColor = "#ff000033";
 
     }
+    else if (result === "inexistant") {
+      
+      login.style.borderColor = "green";
+      login.style.backgroundColor = "#green";
 
+    } 
     
   }
 
