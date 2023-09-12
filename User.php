@@ -22,6 +22,7 @@ class User extends Database
             $this->login = $_SESSION["user"]["login"];
             $this->firstname = $_SESSION["user"]["firstname"];
             $this->lastname = $_SESSION["user"]["lastname"];;
+            $this->id = $_SESSION["user"]["id"];
         }
     }
     public function getLogin()
