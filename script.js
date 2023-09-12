@@ -28,20 +28,19 @@ document.addEventListener("DOMContentLoaded", function () {
       body: data,
     })
 
-    let result = await response.text()
-    console.log(result)
-
-    if (result === "existant") {
+    let result = (await response.text()).trim();
+console.log(result)
+    if (result === 'existant') {
+      // if (response === "existant") {
       error_login.innerHTML = "Login unavailable";
-
       login.style.borderColor = "red";
       login.style.backgroundColor = "red";
     }
     else if (result === "inexistant") {
-      
+      console.log("test2")
       login.style.borderColor = "initial";
       login.style.backgroundColor = "initial";
-
+      error_login.innerHTML = ""
     } 
 
     
@@ -114,9 +113,9 @@ document.addEventListener("DOMContentLoaded", function () {
   //   login_check(form_register);
   // });
 
-  login.addEventListener("blur", function (e) {
+  login.addEventListener("blur", async function (e) {
     e.preventDefault();
-    login_check(login);
+    await login_check(login);
   });
 
   password.addEventListener("blur", function (e) {
