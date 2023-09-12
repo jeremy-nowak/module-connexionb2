@@ -1,6 +1,8 @@
 
 <?php
 
+require_once "Database.php";
+
 class User{
 
 
@@ -27,9 +29,9 @@ private $lastname;
     $pdo = new PDO('mysql:host=localhost;dbname=moduleconnexionb2;charset=utf8', 'root', '');
     $sql = "SELECT login FROM user WHERE login = :login";
     
-    $statement = $pdo -> prepare($sql);
-    $statement -> execute([':login' => $login]);
-    $student = $statement -> fetch(PDO::FETCH_ASSOC);
+    $statement = $pdo->prepare($sql);
+    $statement->execute([':login' => $login]);
+    $student = $statement->fetch(PDO::FETCH_ASSOC);
 
       if($student){
     
@@ -39,7 +41,6 @@ private $lastname;
         else{
             echo "inexistant";
         }
-
 }
 }
 
