@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let password_conf = document.querySelector("#password_conf");
   let firstname = document.querySelector("#firstname");
   let lastname = document.querySelector("#lastname");
+  let error_login = document.querySelector('#error_login')
 
   // --------------------------------Verification of form inputS start-----------------------
 
@@ -15,8 +16,8 @@ document.addEventListener("DOMContentLoaded", function () {
       login.style.backgroundColor = "red";
       login.style.borderColor = "red"
     } else {
-      login.style.backgroundColor = "green";
-      login.style.borderColor = "green";
+      login.style.backgroundColor = "initial";
+      login.style.borderColor = "initial";
     }
 
     let data = new FormData(form_register);
@@ -31,18 +32,18 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log(result)
 
     if (result === "existant") {
-      login.nextElementSibling.innerHTML = "Login unavailable";
+      error_login.innerHTML = "Login unavailable";
 
       login.style.borderColor = "red";
-      login.style.backgroundColor = "#ff000033";
-
+      login.style.backgroundColor = "red";
     }
     else if (result === "inexistant") {
       
-      login.style.borderColor = "green";
-      login.style.backgroundColor = "#green";
+      login.style.borderColor = "initial";
+      login.style.backgroundColor = "initial";
 
     } 
+
     
   }
 
@@ -52,8 +53,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (passwordValue.trim() === "") {
       password.style.backgroundColor = "red";
     } else {
-      password.style.backgroundColor = "green";
-      password.style.borderColor = "green";
+      password.style.backgroundColor = "initial";
+      password.style.borderColor = "initial";
     }
   }
 
@@ -63,8 +64,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (firstnameValue.trim() === "") {
       firstname.style.backgroundColor = "red";
     } else {
-      firstname.style.backgroundColor = "green";
-      firstname.style.borderColor = "green";
+      firstname.style.backgroundColor = "initial";
+      firstname.style.borderColor = "initial";
     }
   }
 
@@ -74,8 +75,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (password_confValue.trim() === "") {
       password_conf.style.backgroundColor = "red";
     } else {
-      password_conf.style.backgroundColor = "green";
-      password_conf.style.borderColor = "green";
+      password_conf.style.backgroundColor = "initial";
+      password_conf.style.borderColor = "initial";
     }
   }
 
@@ -85,10 +86,11 @@ document.addEventListener("DOMContentLoaded", function () {
     if (lastnameValue.trim() === "") {
       lastname.style.backgroundColor = "red";
     } else {
-      lastname.style.backgroundColor = "green";
-      lastname.style.borderColor = "green";
+      lastname.style.backgroundColor = "initial";
+      lastname.style.borderColor = "initial";
     }
   }
+
 
   // --------------------------------Verification of form inputS end-----------------------
 
