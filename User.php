@@ -117,18 +117,26 @@ class User extends Database
 
     }
     
-    public function update($login, $firstname, $lastname, $password){
-        $this->login = htmlspecialchars($this->login);
-        $this->firstname = htmlspecialchars($this->firstname);
-        $this->lastname = htmlspecialchars($this->lastname);
-        $this->password = htmlspecialchars($this->password);
-        $this->password = password_hash($this->password, PASSWORD_DEFAULT);
+    public function update($login, $firstname, $lastname, $password, $id){
+
+        $login = htmlspecialchars($login);
+        $firstname = htmlspecialchars($firstname);
+        $lastname = htmlspecialchars($lastname);
+        $password = htmlspecialchars($password);
+        $id = htmlspecialchars($id);
+        $password = password_hash($password, PASSWORD_DEFAULT);
         
 
 
-        $sql = "UPDATE `user` SET `login`=:login,`firstname`=:firstname,`lastname`=:lastname WHERE id = :id";
+        $sql = "UPDATE `user` SET `login`=:login,`firstname`=:firstname,`lastname`=:lastname, `password`=:password WHERE id = :id";
         $prepare = $this->bdd->prepare($sql);
-        $prepare->execute([':login' => $this->login, ':firstname' => $this->firstname, ':lastname' => $this->lastname]);
+        $prepare->execute([':login' => $login, ':firstname' => $firstname, ':lastname' => $lastname, ':password' => $password]);
+        if ($prepare) {
+            echo "update accomplished";
+        }
+        else{
+            echo "update failed";
+        }
     }
 }
 
