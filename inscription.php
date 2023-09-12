@@ -37,6 +37,7 @@ require_once "traitement.php";
         <span></span>
 
         <input type="submit" value="Submit" id="submit_register">
+        <p id="error_submit" ></p>
 
 
     </form>

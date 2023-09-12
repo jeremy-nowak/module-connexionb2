@@ -6,8 +6,11 @@ document.addEventListener("DOMContentLoaded", function () {
   let firstname = document.querySelector("#firstname");
   let lastname = document.querySelector("#lastname");
   let error_login = document.querySelector('#error_login')
+  let error_submit = document.querySelector('#error_submit');
 
-  // --------------------------------Verification of form inputS start-----------------------
+// ----------------------------------------------------------------------------------------------
+  // --------------------------------Verification of form inputS start--------------------------
+// ----------------------------------------------------------------------------------------------
 
   async function login_check(login) {
     let loginValue = login.value;
@@ -91,27 +94,73 @@ console.log(result)
   }
 
 
+   async function register(form_register) {
+
+    let data = new FormData(form_register)
+    data.append("register", "ok")
+
+    let response = await fetch("traitement.php",{
+      method: "POST",
+      body: data,
+    })
+
+    let result = (await response.text()).trim();
+    if (result === 'registerOK') {
+      error_submit.innerHTML = "Register succeed"
+      
+    }
+    else if (result === "registernotOK") {
+      console.log("test2")
+
+      error_submit.innerHTML = "Register fail"
+    } 
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  // ----------------------------------------------------------------------------------------------
   // --------------------------------Verification of form inputS end-----------------------
-
-  // function register(form_register) {
-  //   let data = new FormData(form_register);
-  //   data.append("in");
-  //   let response = fetch("traitement.php", {
-  //     method: "POST",
-  //     body: data,
-  //   })
-  //     .then((rep) => {
-  //       console.log(rep);
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // }
-
-  // form_register.addEventListener("submit", function (e) {
-  //   e.preventDefault();
-  //   login_check(form_register);
-  // });
+  // ----------------------------------------------------------------------------------------------
+  
+  form_register.addEventListener("submit", function (e) {
+    e.preventDefault();
+    register(form_register);
+  });
 
   login.addEventListener("blur", async function (e) {
     e.preventDefault();
