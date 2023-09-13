@@ -1,5 +1,5 @@
 <?php
-require_once "User.php";
+require_once "../class/User.php";
 $user = new User();
 
 
@@ -22,6 +22,12 @@ if (isset($_POST["register"])) {
     $user->register($login, $password, $password_conf, $lastname, $firstname);
 }
 
+if(isset($_POST["login_form"])){
 
 
+        $login = $_POST["login"];
+        $password = $_POST["password_login"];
+
+        $user->login($login, $password);
+}
 ?>

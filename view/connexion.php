@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once "User.php";
-require_once "traitement.php";
+require_once "../class/User.php";
+require_once "../controller/traitement.php"
 
 ?>
 
@@ -10,16 +10,16 @@ require_once "traitement.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="/style/style.css">
+    <script src="../script/script.js"></script>
     <title>Connexion</title>
 </head>
 <body>
     
-<form  method="post" id="connexion_form">
+<form  method="post" id="login_form">
 
     <label for="login">Login</label>
-    <input type="text" name="login" id="login">
+    <input type="text" name="login" id="login_login">
 
     <label for="password">Password</label>
     <input type="password" name="password_login" id="password_login">
