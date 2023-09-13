@@ -1,5 +1,5 @@
 <?php
-require_once "../class/User.php";
+require_once "/var/www/html/module-connexionb2/class/User.php";
 $user = new User();
 
 
@@ -17,12 +17,10 @@ if (isset($_POST["register"])) {
     $lastname = $_POST["lastname"];
     $password_conf = $_POST["password_conf"];
 
-    var_dump($password, $password_conf);
-
     $user->register($login, $password, $password_conf, $lastname, $firstname);
 }
 
-if(isset($_POST["login_form"])){
+if(isset($_POST["login_formulaire"])){
 
 
         $login = $_POST["login"];
@@ -30,4 +28,6 @@ if(isset($_POST["login_form"])){
 
         $user->login($login, $password);
 }
+
+
 ?>
