@@ -1,8 +1,8 @@
 
 
 <?php
-require_once "User.php";
-require_once "traitement.php";
+require_once "../class/User.php";
+require_once "../controller/traitement.php";
 ?>
 
 <!DOCTYPE html>
@@ -10,8 +10,8 @@ require_once "traitement.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="script.js"></script>
-    <title>Inscription form</title>
+    <script src="../script/script.js"></script>
+    <title>Inscription</title>
 </head>
 <body>
     
@@ -19,22 +19,23 @@ require_once "traitement.php";
 
         <label for="login">Login:</label>
         <input type="text" name="login" id="login">
-            <p id="error_login"></p>
+        <p id="error_login"></p>
+
         <label for="password">Password:</label>
         <input type="password" name="password" id="password"><br>
-        <span></span>
+        <p id="error_password"></p>
 
         <label for="password_conf">Password confirmation:</label>
         <input type="password" name="password_conf" id="password_conf"><br>
-        <span></span>
+        <p id="error_password_conf"></p>
 
         <label for="firstname">firstname:</label>
         <input type="firstname" name="firstname" id="firstname"><br>
-        <span></span>
+        <p id="error_firstname" ></p>
         
         <label for="lastname">lastname:</label>
         <input type="lastname" name="lastname" id="lastname"><br>
-        <span></span>
+        <p id="error_lastname"></p>
 
         <input type="submit" value="Submit" id="submit_register">
         <p id="error_submit" ></p>

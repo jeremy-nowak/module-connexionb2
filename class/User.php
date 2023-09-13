@@ -1,7 +1,6 @@
 
 <?php
 require_once "Database.php";
-
 class User extends Database
 {
 
@@ -83,8 +82,6 @@ class User extends Database
     public function register($login, $password, $password_conf, $lastname, $firstname )
     {
         
-        var_dump($password, $password_conf);
-
         if ($this->checkLogin($login) === "inexistant") {
 
             $password = trim($password);
@@ -117,6 +114,7 @@ class User extends Database
 
     }
     
+    
     public function update($login, $firstname, $lastname, $password, $id){
 
         $login = htmlspecialchars($login);
@@ -137,6 +135,30 @@ class User extends Database
         else{
             echo "update failed";
         }
+    }
+
+
+    public function login($login, $password){
+
+
+        $sql = "SELECT * FROM user WHERE login = :login";
+        $statement = $this->bdd->prepare($sql);
+        $statement->execute([':login' => $login]);
+        $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+        if ($user) {
+
+            if (password_verify($password, $user["password"])) {
+
+                $_SESSION["user"] = $user;
+                echo "loginOK";
+            } else {
+                echo "loginnotOK";
+            }
+        } else {
+            echo "loginnotOK";
+        }
+
     }
 }
 
