@@ -1,5 +1,7 @@
 
 <?php
+
+
 require_once "Database.php";
 class User extends Database
 {
@@ -15,13 +17,6 @@ class User extends Database
     {
 
         parent::__construct();
-
-        if (isset($_SESSION["user"])) {
-
-            $this->login = $_SESSION["user"]["login"];
-            $this->firstname = $_SESSION["user"]["firstname"];
-            $this->lastname = $_SESSION["user"]["lastname"];;
-        }
     }
     public function getLogin()
     {
@@ -131,9 +126,11 @@ class User extends Database
         $prepare->execute([':login' => $login, ':firstname' => $firstname, ':lastname' => $lastname, ':password' => $password]);
         if ($prepare) {
             echo "update accomplished";
+            return "update accomplished";
         }
         else{
             echo "update failed";
+            return "update failed";
         }
     }
 
@@ -145,12 +142,22 @@ class User extends Database
         $statement = $this->bdd->prepare($sql);
         $statement->execute([':login' => $login]);
         $user = $statement->fetch(PDO::FETCH_ASSOC);
-
         if ($user) {
+
+//             id' => int 22
+//   'login' => string 'a' (length=1)
+//   'firstname' => string 'a' (length=1)
+//   'lastname' => string 'a' (length=1)
+//   'password' => string '$
 
             if (password_verify($password, $user["password"])) {
 
-                $_SESSION["user"] = $user;
+                $_SESSION["user"]["id"] = $user["id"];
+                $_SESSION["user"]["login"] = $user["login"];
+                $_SESSION["user"]["firstname"] = $user["firstname"];
+                $_SESSION["user"]["lastname"] = $user["lastname"];
+
+
                 echo "loginOK";
             } else {
                 echo "loginnotOK";

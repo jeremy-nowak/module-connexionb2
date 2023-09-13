@@ -1,8 +1,11 @@
 
 
 <?php
-require_once "../class/User.php";
-require_once "../controller/traitement.php";
+if(!isset($_SESSION)){
+    session_start();
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -13,8 +16,7 @@ require_once "../controller/traitement.php";
     <script src="../script/script.js"></script>
     <title>Inscription</title>
 </head>
-<body>
-    
+<body>    
     <form  method="post" id="register_form">
 
         <label for="login">Login:</label>

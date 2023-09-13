@@ -1,16 +1,15 @@
 <?php
-session_start();
-require_once "../class/User.php";
-require_once "../controller/traitement.php"
-
+if(!isset($_SESSION)){
+    session_start();
+}
+require_once "header.php";
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="../style/style.css">
     <script src="../script/script.js"></script>
     <title>Connexion</title>
 </head>
@@ -25,6 +24,7 @@ require_once "../controller/traitement.php"
     <input type="password" name="password_login" id="password_login">
 
     <input type="submit" value="Submit" id="submit_login">
+    <p id="error_form_login" ></p>
 
 </form>
 
