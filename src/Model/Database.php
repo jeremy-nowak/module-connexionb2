@@ -1,5 +1,7 @@
-
 <?php
+namespace App\Model;
+use PDO;
+use PDOException;
 abstract class Database{
     protected $bdd;
     public $host;

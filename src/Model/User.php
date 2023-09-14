@@ -1,8 +1,9 @@
-
 <?php
+namespace App\Model;
+use PDO;
+use App\Model\Database;
 
 
-require_once "Database.php";
 class User extends Database
 {
 
@@ -63,54 +64,31 @@ class User extends Database
         $student = $statement->fetch(PDO::FETCH_ASSOC);
 
         if ($student) {
-
             echo "existant";
             return "existant";
         } else {
             echo "inexistant";
             return "inexistant";
         }
-
     }
+    
 
 
-    public function register($login, $password, $password_conf, $lastname, $firstname )
+     public function register($login, $password, $lastname, $firstname )
     {
-        
-        if ($this->checkLogin($login) === "inexistant") {
-
-            $password = trim($password);
-            $password_conf = trim($password_conf);
-
-            if ($password == $password_conf) {
-
-                $login = htmlspecialchars($login);
-                $firstname = htmlspecialchars($firstname);
-                $lastname = htmlspecialchars($lastname);
-                $password = htmlspecialchars($password);
-                $password = password_hash($password, PASSWORD_DEFAULT);
-
                 $sql = "INSERT INTO `user`(`login`, `firstname`, `lastname`, `password`) VALUES (:login,:firstname, :lastname, :password)";
                 $prepare = $this->bdd->prepare($sql);
                 $prepare->execute([':login' => $login, ':firstname' => $firstname, ':lastname' => $lastname, ':password' => $password]);
 
+                echo "registerOK";
+                return "registerOK";
 
+        }
 
-                if ($prepare) {
-                    echo "registerOK";
-                } else {
-                    echo "registernotOK";
-                }
-            } 
-            else {
-                echo "Password aren't the same";
-            }
-        } 
-
-    }
     
     
-    public function update($login, $firstname, $lastname, $password, $id){
+    
+     public function update($login, $firstname, $lastname, $password, $id){
 
         $login = htmlspecialchars($login);
         $firstname = htmlspecialchars($firstname);
@@ -144,29 +122,35 @@ class User extends Database
         $user = $statement->fetch(PDO::FETCH_ASSOC);
         if ($user) {
 
-//             id' => int 22
-//   'login' => string 'a' (length=1)
-//   'firstname' => string 'a' (length=1)
-//   'lastname' => string 'a' (length=1)
-//   'password' => string '$
-
             if (password_verify($password, $user["password"])) {
 
+                session_start();
                 $_SESSION["user"]["id"] = $user["id"];
                 $_SESSION["user"]["login"] = $user["login"];
                 $_SESSION["user"]["firstname"] = $user["firstname"];
                 $_SESSION["user"]["lastname"] = $user["lastname"];
 
-
+                var_dump($_SESSION);
                 echo "loginOK";
+                return "loginOK";
             } else {
                 echo "loginnotOK";
+                return "loginnotOK";
             }
         } else {
             echo "loginnotOK";
+            return "loginnotOK";
         }
 
     }
+
+    // public function logout(){
+    //     session_start();
+    //     session_destroy();
+    //     return "Logout";
+    //     echo "Logout";
+    // }
 }
+  
 
 ?>
