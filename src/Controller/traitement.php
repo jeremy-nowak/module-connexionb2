@@ -1,5 +1,10 @@
 <?php
-require_once "/var/www/html/module-connexionb2/class/User.php";
+namespace App\Controller;
+use App\Model\User;
+if(!isset($_SESSION)){
+    session_start();
+}   
+
 $user = new User();
 
 

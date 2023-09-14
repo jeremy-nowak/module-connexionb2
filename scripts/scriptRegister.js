@@ -4,10 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // --------------------------------Register Section Start----------------------------------------
   // ----------------------------------------------------------------------------------------------
 
-  if (
-    window.location.pathname.toString() ===
-    "/module-connexionb2/view/inscription.php"
-  ) {
+  
     let form_register = document.querySelector("#register_form");
     let login = document.querySelector("#login");
     let password = document.querySelector("#password");
@@ -39,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
       let data = new FormData(form_register);
       data.append("loginCheck", "ok");
 
-      let response = await fetch("../controller/traitement.php", {
+      let response = await fetch("register/verifLog", {
         method: "POST",
         body: data,
       });
@@ -125,12 +122,13 @@ document.addEventListener("DOMContentLoaded", function () {
     async function register(form_register) {
       let data = new FormData(form_register);
       data.append("register", "ok");
-
-      let response = await fetch("../controller/traitement.php", {
+      let response = await fetch('register/registerValidate', {
         method: "POST",
         body: data,
-      });
 
+      });
+// regler le probleme de la redirection ver ma page login
+      
       let result = (await response.text()).trim();
       if (result === "inexistantregisterOK") {
         console.log("Je rentre dans ma condition register");
@@ -139,6 +137,7 @@ document.addEventListener("DOMContentLoaded", function () {
         setTimeout(() => {
           locationLogin();
         }, 2000);
+        window.location.href = "login";
 
       } else if (result === "inexistantregisternotOK") {
         console.log("register fail");
@@ -190,110 +189,110 @@ document.addEventListener("DOMContentLoaded", function () {
     // ----------------------------------------------------------------------------------------------
     // --------------------------------Register Section End--------------------------------------------
     // ------------------------------------------------------------------------------------------------
-  }
+  
 
   // ----------------------------------------------------------------------------------------------
   // --------------------------------Login Section Start-------------------------------------------
   // ----------------------------------------------------------------------------------------------
 
-  if (window.location.pathname === "/module-connexionb2/view/connexion.php") {
-    let login_form = document.querySelector("#login_form");
-    let login_login = document.querySelector("#login_login");
-    let password_login = document.querySelector("#password_login");
-    let submit_login = document.querySelector("#submit_login");
-    let error_form_login = document.querySelector("#error_form_login");
+  // if (window.location.pathname === "/module-connexionb2/view/connexion.php") {
+  //   let login_form = document.querySelector("#login_form");
+  //   let login_login = document.querySelector("#login_login");
+  //   let password_login = document.querySelector("#password_login");
+  //   let submit_login = document.querySelector("#submit_login");
+  //   let error_form_login = document.querySelector("#error_form_login");
     
-    // ----------------------------------------------------------------------------------------------
-    // --------------------------------Verification of form inputS start-----------------------------
-    // ----------------------------------------------------------------------------------------------
-    console.log(submit_login)
+  //   // ----------------------------------------------------------------------------------------------
+  //   // --------------------------------Verification of form inputS start-----------------------------
+  //   // ----------------------------------------------------------------------------------------------
+  //   console.log(submit_login)
 
-    async function login_check(login_login) {
-      let login_loginValue = login_login.value;
-      error_login.innerHTML = "";
+  //   async function login_check(login_login) {
+  //     let login_loginValue = login_login.value;
+  //     error_login.innerHTML = "";
 
 
-      if (login_loginValue.trim() === "") {
-        login_login.style.backgroundColor = "red";
-        login_login.style.borderColor = "red";
-      } else {
-        login_login.style.backgroundColor = "initial";
-        login_login.style.borderColor = "initial";
-      }
+  //     if (login_loginValue.trim() === "") {
+  //       login_login.style.backgroundColor = "red";
+  //       login_login.style.borderColor = "red";
+  //     } else {
+  //       login_login.style.backgroundColor = "initial";
+  //       login_login.style.borderColor = "initial";
+  //     }
 
-      let data = new FormData(form_register);
-      data.append("loginCheck", "ok");
+  //     let data = new FormData(form_register);
+  //     data.append("loginCheck", "ok");
 
-      let response = await fetch("../controller/traitement.php", {
-        method: "POST",
-        body: data,
-      });
+  //     let response = await fetch("../controller/traitement.php", {
+  //       method: "POST",
+  //       body: data,
+  //     });
 
-      let result = (await response.text()).trim();
-      console.log(result);
+  //     let result = (await response.text()).trim();
+  //     console.log(result);
 
-      if (result === "existant") {
-        // if (response === "existant") {
-        error_login.innerHTML = "Login unavailable";
-        login_login.style.borderColor = "red";
-        login_login.style.backgroundColor = "red";
-      } else if (result === "inexistant") {
-        login_login.style.borderColor = "initial";
-        login_login.style.backgroundColor = "initial";
-        error_login.innerHTML = "";
-      }
-    }
-    // ----------------------------------------------------------------------------------------------
-    // --------------------------------Verification of form inputS end-------------------------------
-    // ----------------------------------------------------------------------------------------------
+  //     if (result === "existant") {
+  //       // if (response === "existant") {
+  //       error_login.innerHTML = "Login unavailable";
+  //       login_login.style.borderColor = "red";
+  //       login_login.style.backgroundColor = "red";
+  //     } else if (result === "inexistant") {
+  //       login_login.style.borderColor = "initial";
+  //       login_login.style.backgroundColor = "initial";
+  //       error_login.innerHTML = "";
+  //     }
+  //   }
+  //   // ----------------------------------------------------------------------------------------------
+  //   // --------------------------------Verification of form inputS end-------------------------------
+  //   // ----------------------------------------------------------------------------------------------
 
-    // ----------------------------------------------------------------------------------------------
-    // --------------------------------Function login start------------------------------------------
-    // ----------------------------------------------------------------------------------------------
+  //   // ----------------------------------------------------------------------------------------------
+  //   // --------------------------------Function login start------------------------------------------
+  //   // ----------------------------------------------------------------------------------------------
 
-    function indexLocation(){
-      window.location = "../index.php"
-    }
+  //   function indexLocation(){
+  //     window.location = "../index.php"
+  //   }
 
-    async function login(login_form) {
+  //   async function login(login_form) {
 
-      let data = new FormData(login_form);
-      data.append("login_formulaire", "ok");
+  //     let data = new FormData(login_form);
+  //     data.append("login_formulaire", "ok");
 
-      let response = await fetch("../controller/traitement.php", {
-        method: "POST",
-        body: data
-      });
+  //     let response = await fetch("../controller/traitement.php", {
+  //       method: "POST",
+  //       body: data
+  //     });
 
-      let result = (await response.text()).trim();
-      if (result === "loginOK") {
-        error_form_login.innerHTML = "Login successfull"
-        setTimeout( indexLocation, 2000)
-        }
-      if (result === "loginnotOK") {
-        error_form_login.innerHTML = "Login fail";
-      }
-    }
+  //     let result = (await response.text()).trim();
+  //     if (result === "loginOK") {
+  //       error_form_login.innerHTML = "Login successfull"
+  //       setTimeout( indexLocation, 2000)
+  //       }
+  //     if (result === "loginnotOK") {
+  //       error_form_login.innerHTML = "Login fail";
+  //     }
+  //   }
 
-    // ----------------------------------------------------------------------------------------------
-    // --------------------------------Function login start------------------------------------------
-    // ----------------------------------------------------------------------------------------------
+  //   // ----------------------------------------------------------------------------------------------
+  //   // --------------------------------Function login start------------------------------------------
+  //   // ----------------------------------------------------------------------------------------------
 
-    // ----------------------------------------------------------------------------------------------
-    // --------------------------------addEventListener login start----------------------------------
-    // ----------------------------------------------------------------------------------------------
+  //   // ----------------------------------------------------------------------------------------------
+  //   // --------------------------------addEventListener login start----------------------------------
+  //   // ----------------------------------------------------------------------------------------------
 
-    // submit_login.addEventListener("submit", function (e) {
-    //   e.preventDefault();
-    //   // login(login_form);
+  //   // submit_login.addEventListener("submit", function (e) {
+  //   //   e.preventDefault();
+  //   //   // login(login_form);
 
-    //   console.log("cabuuuug")
-    // });
-    login_form.addEventListener("submit", function (e) {
-      e.preventDefault();
+  //   //   console.log("cabuuuug")
+  //   // });
+  //   login_form.addEventListener("submit", function (e) {
+  //     e.preventDefault();
     
-      login(login_form)
-    });
+  //     login(login_form)
+  //   });
 
     // ----------------------------------------------------------------------------------------------
     // --------------------------------addEventListener login end-----------------------------------
@@ -302,5 +301,5 @@ document.addEventListener("DOMContentLoaded", function () {
     // ----------------------------------------------------------------------------------------------
     // --------------------------------Login Section End---------------------------------------------
     // ----------------------------------------------------------------------------------------------
-  }
+  // }
 });
