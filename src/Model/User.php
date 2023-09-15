@@ -89,19 +89,17 @@ class User extends Database
     
     
      public function update($login, $firstname, $lastname, $password, $id){
-
         $login = htmlspecialchars($login);
         $firstname = htmlspecialchars($firstname);
         $lastname = htmlspecialchars($lastname);
         $password = htmlspecialchars($password);
-        $id = htmlspecialchars($id);
         $password = password_hash($password, PASSWORD_DEFAULT);
         
 
 
         $sql = "UPDATE `user` SET `login`=:login,`firstname`=:firstname,`lastname`=:lastname, `password`=:password WHERE id = :id";
         $prepare = $this->bdd->prepare($sql);
-        $prepare->execute([':login' => $login, ':firstname' => $firstname, ':lastname' => $lastname, ':password' => $password]);
+        $prepare->execute([':login' => $login, ':firstname' => $firstname, ':lastname' => $lastname, ':password' => $password, ':id' => $id]);
         if ($prepare) {
             echo "update accomplished";
             return "update accomplished";
@@ -129,6 +127,7 @@ class User extends Database
                 $_SESSION["user"]["firstname"] = $user["firstname"];
                 $_SESSION["user"]["lastname"] = $user["lastname"];
 
+                    
                 echo "loginOK";
                 return "loginOK";
             } else {

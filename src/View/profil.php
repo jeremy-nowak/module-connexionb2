@@ -34,11 +34,13 @@ if(!isset($_SESSION)){
     <label for="lastname">Lastname</label>
     <input type="text" name="lastname" id="lastname_profil"value="<?= $_SESSION["user"]["lastname"]?>" >
 
-    <label for="password">Old Password</label>
-    <input type="password" name="password" id="password_profil">
+    <label for="password">New password</label>
+    <input type="password" name="password_profil" id="password_profil">
+    <span id="error_password" ></span>
 
-    <label for="password">New Password</label>
-    <input type="password" name="password" id="password_profil_conf">
+    <label for="password">Password confirmation</label>
+    <input type="password" name="password_profil_conf" id="password_profil_conf">
+    <span id="error_password_conf" ></span>
 
     <input type="submit" value="Submit" id="submit_profil">
 
