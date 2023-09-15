@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       let data = new FormData(form_register);
       data.append("loginCheck", "ok");
-
+console.log(data)
       let response = await fetch("register/verifLog", {
         method: "POST",
         body: data,
@@ -56,16 +56,24 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function password_check(password) {
+
+      const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
       let passwordValue = password.value;
+
       error_password.innerHTML = "";
 
-      if (passwordValue.trim() === "") {
-        password.style.backgroundColor = "red";
-        error_password.innerHTML = "You need to type a password";
-      } else {
-        password.style.backgroundColor = "initial";
-        password.style.borderColor = "initial";
-      }
+        if (passwordValue.trim() === "") {
+          password.style.backgroundColor = "red";
+          error_password.innerHTML = "You need to type a password";
+        }
+        else if(regexPassword.test(passwordValue)){
+          password.style.backgroundColor = "initial";
+          password.style.borderColor = "initial";
+        } 
+        else{
+          error_password.innerHTML = "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character:"
+        }
+      
     }
 
     function firstname_check(firstname) {
@@ -116,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // ----------------------------------------------------------------------------------------------
 
     function locationLogin() {
-      window.location.href = "connexion.php";
+      window.location.href = "login";
     }
 
     async function register(form_register) {
@@ -130,14 +138,12 @@ document.addEventListener("DOMContentLoaded", function () {
 // regler le probleme de la redirection ver ma page login
       
       let result = (await response.text()).trim();
+      console.log(result)
       if (result === "inexistantregisterOK") {
-        console.log("Je rentre dans ma condition register");
-
         error_submit.innerHTML = "Congratulation you are registered !";
         setTimeout(() => {
           locationLogin();
         }, 2000);
-        window.location.href = "login";
 
       } else if (result === "inexistantregisternotOK") {
         console.log("register fail");
@@ -156,7 +162,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     form_register.addEventListener("submit", function (e) {
       e.preventDefault();
-
       register(form_register);
     });
 

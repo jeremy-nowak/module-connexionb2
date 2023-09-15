@@ -4,7 +4,9 @@ if(!isset($_SESSION)){
 }
 
 require_once "header.php";
-var_dump($_SESSION['user']);
+if (isset($_SESSION['user'])) {
+    var_dump($_SESSION['user']);    }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

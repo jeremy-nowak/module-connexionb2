@@ -15,18 +15,20 @@ if (!isset($_SESSION)) {
 
     <header id="header">
         <nav>
+            <a href="./">Home</a>
             <a href="./register">Inscription</a>
             <a href="./login">Connexion</a>
             <?php
             if (isset($_SESSION["user"])) {
             ?>
                 <a href="./logout">Deconnexion</a>
+                <a href="./profil">Profil</a>
             <?php
             }
             ?>
 
 
-            <a href="./">Home</a>
+
         </nav>
     </header>
 </body>

@@ -124,13 +124,11 @@ class User extends Database
 
             if (password_verify($password, $user["password"])) {
 
-                session_start();
                 $_SESSION["user"]["id"] = $user["id"];
                 $_SESSION["user"]["login"] = $user["login"];
                 $_SESSION["user"]["firstname"] = $user["firstname"];
                 $_SESSION["user"]["lastname"] = $user["lastname"];
 
-                var_dump($_SESSION);
                 echo "loginOK";
                 return "loginOK";
             } else {
