@@ -21,6 +21,10 @@ $router->map( 'GET', '/register', function(){
     require_once "src/View/inscription.php";
 }, "registerForm");
 
+$router->map( 'GET', '/profil', function(){
+    require_once "src/View/profil.php";
+});
+
 $router->map( 'POST', '/register/verifLog', function(){
     $authController = new AuthController();
     $login = $_POST["login"];
@@ -28,7 +32,7 @@ $router->map( 'POST', '/register/verifLog', function(){
 }, "checkLogin");
 
 $router->map( 'POST', '/register/registerValidate', function(){
-    $authModel = new User();
+    $authModel = new AuthController();
     $login = $_POST["login"];
     $password = $_POST["password"];
     $lastname = $_POST["lastname"];
@@ -50,6 +54,13 @@ $router->map( 'POST', '/login/loginValidate',function(){
     $authControleur = new AuthController();
     $authControleur->authLogin();
 },  "loginValidate");
+
+
+
+$router->map( 'POST', '/profil/updateProfil',function(){
+    $authControleur = new AuthController();
+    $authControleur->updateProfil();
+},  "updateProfil");
 
 
 

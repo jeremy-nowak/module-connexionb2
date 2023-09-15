@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+
     let login_form = document.querySelector("#login_form");
     let login_login = document.querySelector("#login_login");
     let password_login = document.querySelector("#password_login");
@@ -9,7 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // ----------------------------------------------------------------------------------------------
     // --------------------------------Verification of form inputS start-----------------------------
     // ----------------------------------------------------------------------------------------------
-    console.log(submit_login)
 
     async function login_check(login_login) {
       let login_loginValue = login_login.value;
@@ -59,6 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     async function login(login_form) {
+      console.log(login_form)
 
         
       let data = new FormData(login_form);
