@@ -10,6 +10,7 @@ require_once "header.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer src="scripts/scriptRegister.js"></script>
+    
     <title>Inscription</title>
 </head>
 <body>    
