@@ -1,0 +1,165 @@
+/* Style pour le formulaire de connexion à la manière de Netflix */
+#login_form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+body{
+    background-color: #444654;
+}
+  
+  /* Style pour les libellés */
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #000;
+  }
+  
+  /* Style pour les champs de saisie */
+  input[type="text"],
+  input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+  }
+  
+  /* Style pour le bouton de soumission */
+  #submit_login {
+    width: 100%;
+    padding: 10px;
+    background-color: #e50914; /* Rouge Netflix */
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  #submit_login:hover {
+    background-color: #b2070f; /* Rouge Netflix plus foncé au survol */
+  }
+  
+  /* Style pour les messages d'erreur */
+  #error_form_login {
+    color: #e50914; /* Rouge Netflix */
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  
+                                    /* REGISTER PAGE */
+/* Style pour le formulaire d'inscription à la manière de Netflix */
+#register_form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Style pour les libellés */
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #000;
+  }
+  
+  /* Style pour les champs de saisie */
+  input[type="text"],
+  input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+  }
+  
+  /* Style pour le bouton de soumission */
+  #submit_register {
+    width: 100%;
+    padding: 10px;
+    background-color: #e50914; /* Rouge Netflix */
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  #submit_register:hover {
+    background-color: #b2070f; /* Rouge Netflix plus foncé au survol */
+  }
+  
+  /* Style pour les messages d'erreur */
+  #error_login,
+  #error_password,
+  #error_password_conf,
+  #error_firstname,
+  #error_lastname,
+  #error_submit {
+    color: #e50914; /* Rouge Netflix */
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+                     /* HEADER STYLE */
+
+/* Style pour le header à la manière de Netflix */
+#header {
+  background-color: #343541; /* Fond sombre */
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Style pour la navigation à la manière de Netflix */
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 20px;
+  font-weight: bold;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #e50914; /* Rouge Netflix */
+}
+
+/* Style pour les liens de déconnexion et de profil à la manière de Netflix */
+nav a.logout,
+nav a.profil {
+  background-color: #e50914; /* Rouge Netflix */
+  padding: 5px 20px;
+  border-radius: 3px;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+nav a.logout:hover,
+nav a.profil:hover {
+  background-color: #b2070f; /* Rouge Netflix plus foncé au survol */
+}
